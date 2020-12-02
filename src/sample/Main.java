@@ -1,8 +1,12 @@
 package sample;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -39,6 +43,18 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
+        ListView<String> list = new ListView<String>();
+        ObservableList<String> items = FXCollections.observableArrayList (
+                "Single", "Double", "Suite", "Family App");
+        list.setItems(items);
+        list.setPrefSize(200, 250);
+        StackPane groot = new StackPane();
+        groot.getChildren().add(list);
+        Scene invScreen = new Scene(groot, 200, 250);
+        Stage newWindow = new Stage();
+        newWindow.setTitle("Inventory");
+        newWindow.setScene(invScreen);
+        newWindow.show();
         primaryStage.show();
     }
     //      readInputFile Function      //
