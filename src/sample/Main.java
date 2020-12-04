@@ -40,9 +40,9 @@ public class Main extends Application {
         writeInputFile(sampleDataCSVName, inventoryMap);
         printInventoryMap(inventoryMap);
         // Views
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
+        primaryStage.setTitle("Grocery Delivery System Employee Portal");
+        primaryStage.setScene(new Scene(root, 800, 500));
         ListView<String> list = new ListView<String>();
         ObservableList<String> items = FXCollections.observableArrayList (
                 "Single", "Double", "Suite", "Family App");
