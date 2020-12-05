@@ -29,3 +29,4 @@
       <Button fx:id="quit" layoutX="433.0" layoutY="363.0" mnemonicParsing="false" onAction="#Exit" prefHeight="44.0" prefWidth="132.0" style="-fx-background-color: red;" text="Quit" />
    </children>
 </AnchorPane>
+
