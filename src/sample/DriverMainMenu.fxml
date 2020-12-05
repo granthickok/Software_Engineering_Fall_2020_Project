@@ -9,57 +9,57 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ManagerMenuController">
-   <children>
-      <Button fx:id="back" layoutX="14.0" layoutY="446.0" mnemonicParsing="false" onAction="#LoadLogin" prefHeight="40.0" prefWidth="84.0" style="-fx-background-color: red;" text="Logout" />
-      <Label fx:id="user" layoutX="14.0" layoutY="410.0" prefHeight="26.0" prefWidth="179.0" text="Logged in as " textFill="#f2eeee">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Text fill="#ebebeb" layoutX="268.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Driver Portal" wrappingWidth="385.08203125">
-         <font>
-            <Font size="48.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="268.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select a task:" wrappingWidth="232.30078125">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="101.0" fitWidth="140.0" layoutX="104.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/Inventory.jpg" />
-         </image>
-      </ImageView>
-      <Text fill="WHITE" layoutX="79.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory Management" wrappingWidth="189.38578033447266">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="101.0" fitWidth="140.0" layoutX="330.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/Groceries.jpg" />
-         </image>
-      </ImageView>
-      <Text fill="WHITE" layoutX="305.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View and Manage Orders" wrappingWidth="189.38578033447266">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="193.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back " wrappingWidth="286.41015625">
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Text>
-      <ImageView fitHeight="101.0" fitWidth="140.0" layoutX="583.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/Bells.jpg" />
-         </image>
-      </ImageView>
-      <Text fill="WHITE" layoutX="539.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="           Notifications" wrappingWidth="189.38578033447266">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-   </children>
+    <children>
+        <Button fx:id="back" layoutX="14.0" layoutY="446.0" mnemonicParsing="false" onAction="#LoadLogin" prefHeight="40.0" prefWidth="84.0" style="-fx-background-color: red;" text="Logout" />
+        <Label fx:id="user" layoutX="14.0" layoutY="410.0" prefHeight="26.0" prefWidth="179.0" text="Logged in as " textFill="#f2eeee">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Text fill="#ebebeb" layoutX="268.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Driver Portal" wrappingWidth="385.08203125">
+            <font>
+                <Font size="48.0" />
+            </font>
+        </Text>
+        <Text fill="WHITE" layoutX="268.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please select a task:" wrappingWidth="232.30078125">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+        <ImageView fitHeight="101.0" fitWidth="140.0" layoutX="104.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/Inventory.jpg" />
+            </image>
+        </ImageView>
+        <Text fill="WHITE" layoutX="79.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory Management" wrappingWidth="189.38578033447266">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Text>
+        <ImageView fitHeight="101.0" fitWidth="140.0" layoutX="330.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/Groceries.jpg" />
+            </image>
+        </ImageView>
+        <Text fill="WHITE" layoutX="305.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View and Manage Orders" wrappingWidth="189.38578033447266">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Text>
+        <Text fill="WHITE" layoutX="193.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome back " wrappingWidth="286.41015625">
+            <font>
+                <Font size="36.0" />
+            </font>
+        </Text>
+        <ImageView fitHeight="101.0" fitWidth="140.0" layoutX="583.0" layoutY="221.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/Bells.jpg" />
+            </image>
+        </ImageView>
+        <Text fill="WHITE" layoutX="539.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="           Notifications" wrappingWidth="189.38578033447266">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Text>
+    </children>
 </AnchorPane>

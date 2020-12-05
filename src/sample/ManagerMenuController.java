@@ -32,16 +32,16 @@ public class ManagerMenuController {
     @FXML
     public void LoadLogin(ActionEvent event) throws IOException { //Change to Main Menu
 
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("Start.fxml"));
-            rootPane1 = loader.load();
-            Scene scene = new Scene(rootPane1);// pane you are GOING TO show
-            LoginController log = loader.getController();
-            log.ePassword = "";
-            log.eUser = "";
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();// pane you are ON
-            window.setScene(scene);
-            window.show();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Start.fxml"));
+        rootPane1 = loader.load();
+        Scene scene = new Scene(rootPane1);// pane you are GOING TO show
+        LoginController log = loader.getController();
+        log.ePassword = "";
+        log.eUser = "";
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();// pane you are ON
+        window.setScene(scene);
+        window.show();
 
     }
 
