@@ -57,6 +57,7 @@ public class LoginController implements Initializable {
             rootPane1 = loader.load();
             Scene scene = new Scene(rootPane1);// pane you are GOING TO show
             MainMenuController main = loader.getController();
+            main.user.setText("Logged in as " + eUser);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();// pane you are ON
             window.setScene(scene);
             window.show();
@@ -65,6 +66,10 @@ public class LoginController implements Initializable {
             tfUser.clear();
 
             tfPassword.clear();
+
+            eUser = "";
+
+            ePassword = "";
 
         }
 
