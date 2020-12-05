@@ -9,11 +9,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 
-public class MainMenuController {
+public class DriverMenuController {
 
     @FXML
     public Button back = null; //button to change screens

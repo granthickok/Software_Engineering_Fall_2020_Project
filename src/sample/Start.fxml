@@ -13,7 +13,7 @@
             <Font size="36.0" />
          </font>
       </Text>
-      <Button fx:id="login" layoutX="235.0" layoutY="363.0" mnemonicParsing="false" onAction="#LoadMenu" prefHeight="44.0" prefWidth="132.0" text="Login" />
+      <Button fx:id="Mlogin" layoutX="235.0" layoutY="363.0" mnemonicParsing="false" onAction="#LoadManagerMenu" prefHeight="44.0" prefWidth="132.0" text="Manager Login" />
       <Text fill="WHITE" layoutX="301.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="132.0">
          <font>
             <Font size="18.0" />
@@ -26,7 +26,7 @@
       </Text>
       <TextField fx:id="tfUser" layoutX="301.0" layoutY="171.0" prefHeight="30.0" prefWidth="170.0" />
       <TextField fx:id="tfPassword" layoutX="301.0" layoutY="268.0" prefHeight="30.0" prefWidth="170.0" />
-      <Button fx:id="quit" layoutX="433.0" layoutY="363.0" mnemonicParsing="false" onAction="#Exit" prefHeight="44.0" prefWidth="132.0" style="-fx-background-color: red;" text="Quit" />
+      <Button fx:id="quit" layoutX="14.0" layoutY="442.0" mnemonicParsing="false" onAction="#Exit" prefHeight="44.0" prefWidth="132.0" style="-fx-background-color: red;" text="Quit" />
+      <Button fx:id="Dlogin" layoutX="405.0" layoutY="363.0" mnemonicParsing="false" onAction="#LoadDriverMenu" prefHeight="44.0" prefWidth="132.0" text="Driver Login" />
    </children>
 </AnchorPane>
-
