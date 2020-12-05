@@ -24,7 +24,11 @@ public class LoginController implements Initializable {
 
 
     @FXML
-    public Button login = null; //button to change screens
+    public Button Mlogin = null; //button to change screens
+
+    @FXML
+    public Button Dlogin = null; //button to change screens
+
 
     @FXML
     public Button quit = null; //button to change screens
@@ -45,7 +49,7 @@ public class LoginController implements Initializable {
     public AnchorPane rootPane1;
 
     @FXML
-    public void LoadMenu(ActionEvent event) throws IOException { //Change to Main Menu
+    public void LoadManagerMenu(ActionEvent event) throws IOException { //Change to Main Menu
 
         eUser = tfUser.getText();
 
@@ -53,10 +57,42 @@ public class LoginController implements Initializable {
 
         if (eUser != "" && ePassword != "") {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("MainMenu.fxml"));
+            loader.setLocation(getClass().getResource("ManagerMainMenu.fxml"));
             rootPane1 = loader.load();
             Scene scene = new Scene(rootPane1);// pane you are GOING TO show
-            MainMenuController main = loader.getController();
+            ManagerMenuController main = loader.getController();
+            main.user.setText("Logged in as " + eUser);
+            main.muser = eUser;
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();// pane you are ON
+            window.setScene(scene);
+            window.show();
+        } else {
+
+            tfUser.clear();
+
+            tfPassword.clear();
+
+            eUser = "";
+
+            ePassword = "";
+
+        }
+
+    }
+
+    @FXML
+    public void LoadDriverMenu(ActionEvent event) throws IOException { //Change to Main Menu
+
+        eUser = tfUser.getText();
+
+        ePassword = tfPassword.getText();
+
+        if (eUser != "" && ePassword != "") {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("DriverMainMenu.fxml"));
+            rootPane1 = loader.load();
+            Scene scene = new Scene(rootPane1);// pane you are GOING TO show
+            ManagerMenuController main = loader.getController();
             main.user.setText("Logged in as " + eUser);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();// pane you are ON
             window.setScene(scene);
@@ -74,6 +110,7 @@ public class LoginController implements Initializable {
         }
 
     }
+
 
     @FXML
     public void Exit(ActionEvent event) throws IOException {
