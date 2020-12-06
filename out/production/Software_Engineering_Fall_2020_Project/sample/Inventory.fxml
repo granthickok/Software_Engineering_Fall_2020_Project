@@ -65,7 +65,7 @@
       <Text fill="WHITE" layoutX="104.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Expired:" wrappingWidth="136.13671875" />
       <TextField editable="false" layoutX="104.0" layoutY="347.0" prefHeight="25.0" prefWidth="179.0" />
       <Text fill="WHITE" layoutX="455.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Expired:" wrappingWidth="136.13671875" />
-      <TextField editable="false" layoutX="459.0" layoutY="347.0" prefHeight="25.0" prefWidth="179.0" />
+      <TextField layoutX="459.0" layoutY="347.0" prefHeight="25.0" prefWidth="179.0" />
       <MenuButton layoutX="224.0" layoutY="455.0" mnemonicParsing="false" text="SortBy:">
         <items>
           <MenuItem mnemonicParsing="false" text="Name" />
