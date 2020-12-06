@@ -65,8 +65,9 @@ public class Main extends Application {
         readEmployeesFile(sampleEmployeesTXTName);
         readInventoryFile(sampleDataTXTName);
         readOrdersFile(sampleOrdersTXTName);
-        writeInventoryFile(sampleDataCSVName, inventoryMap);
-        printInventoryMap(inventoryMap);
+        // show input and write files
+        writeAll();
+        printAll(inventoryMap, userMap, orderMap);
         // Views
         Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
         primaryStage.setTitle("Grocery Delivery System Employee Portal");
@@ -97,6 +98,7 @@ public class Main extends Application {
             tempUser.username = token[2];
             tempUser.password = token[3];
             tempUser.shifts = token[4];
+            userMap.put(token[1], tempUser);
         }
         input.close();
     }
@@ -106,11 +108,12 @@ public class Main extends Application {
             String line = input.nextLine();
             String[] token = line.split(",");
             Order tempOrder = new Order();
-            tempOrder.list = token[0];
-            tempOrder.name = token[1];
+            tempOrder.name = token[0];
+            tempOrder.list = token[1];
             double tempPrice = Double.parseDouble(token[2]);
             tempOrder.total = tempPrice;
             tempOrder.role = token[3];
+            orderMap.put(token[0], tempOrder);
         }
         input.close();
     }
@@ -126,13 +129,15 @@ public class Main extends Application {
             tempItem.price = tempPrice;
             int tempStock = Integer.parseInt(token[3]);
             tempItem.stock = tempStock;
+            int tempDate = Integer.parseInt(token[4]);
+            tempItem.expDATE = tempDate;
             inventoryMap.put(token[1], tempItem);
         }
         input.close();
     }
-    //      writeInputFile Function     //
-    public void writeInventoryFile(String csvFileName, Map hashMap) throws IOException {
-        FileWriter writer = new FileWriter(sampleDataCSVName);
+    //      writeCSVFile Function     //
+    public void writeCSVFile(String csvFileName, Map hashMap) throws IOException {
+        FileWriter writer = new FileWriter(csvFileName);
         hashMap.forEach((k,v) -> {
             try {
                 writer.write(hashMap.get(k).toString());
@@ -142,8 +147,21 @@ public class Main extends Application {
         });
         writer.close();
     }
-    //      printInventoryMap       //
-    public void printInventoryMap(Map hashMap) {
-        System.out.println(hashMap.toString()); }
+    //      writeALL Function       //
+    public void writeAll() throws IOException {
+        writeCSVFile(sampleDataCSVName, inventoryMap);
+        writeCSVFile(sampleEmployeesCSVName, userMap);
+        writeCSVFile(sampleOrdersCSVName, orderMap);
+    }
+    //      printMap       //
+    public void printMap(Map hashMap) {
+        System.out.println(hashMap.toString());
+    }
+    //      printAll        //
+    public void printAll(Map hashMap, Map hashMap2, Map hashMap3) {
+        printMap(hashMap);
+        printMap(hashMap2);
+        printMap(hashMap3);
+    }
 }
 // EOF
