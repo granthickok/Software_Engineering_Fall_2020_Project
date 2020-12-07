@@ -49,6 +49,12 @@ public class InventoryController implements Initializable {
     public Button viewAll = null;
 
     @FXML
+    public Button update = null;
+
+    @FXML
+    public Button clear = null;
+
+    @FXML
     public TableView<Inventory.GroceryItem> table = null;
 
     @FXML
@@ -133,6 +139,12 @@ public class InventoryController implements Initializable {
         table.getItems().addAll(pop);
         table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         //table.getColumns().addAll(Category,Name,Price,Stock,Expired);
+    }
+
+    @FXML
+    public void ClearTable(ActionEvent event) throws IOException{
+
+    table.getItems().clear();
     }
 
 }
