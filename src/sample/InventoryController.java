@@ -27,7 +27,6 @@ import java.util.*;
 import java.util.List;
 //      Class InventoryController     //
 public class InventoryController implements Initializable {
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {}
     @FXML
@@ -164,16 +163,12 @@ public class InventoryController implements Initializable {
         Loader dataLoader = new Loader();
         try {
             File oFile = new File(dataLoader.sampleDataTXTName);
-
             Desktop desktop = Desktop.getDesktop();
-
             if (oFile.exists()) {
-
                 desktop.open(oFile);
             }
         }
         catch(Exception e){
-
             e.printStackTrace();
         }
     }

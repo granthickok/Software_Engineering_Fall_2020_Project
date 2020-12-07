@@ -56,29 +56,31 @@ public class OrderManagerController {
     public String ouser;
 
     @FXML
-    public TableView<OrderList.Order> ord = null;
+    public TableView<Order> ord = null;
 
     @FXML
-    public TableColumn<OrderList.Order,String>  User = null;
+    public TableColumn<Order,String>  User = null;
 
     @FXML
-    public TableColumn<OrderList.Order,String>  Item = null;
+    public TableColumn<Order,String>  Item = null;
 
     @FXML
-    public TableColumn<OrderList.Order,String>  Role = null;
+    public TableColumn<Order,String>  Role = null;
 
     @FXML
-    public TableColumn<OrderList.Order,String>  Quantity = null;
+    public TableColumn<Order,String>  Quantity = null;
 
     @FXML
     public Button update = null;
 
     public OrderList orders = new OrderList();
+    public Loader dataLoader = new Loader();
+    public Saver saver = new Saver();
 
     public void SetOrderList() throws IOException {
-        orders.readOrdersFile(orders.sampleDataTXTName);
+        dataLoader.readOrdersFile();
         //System.out.print(orders.orderMap);
-        orders.writeInputFile(orders.sampleDataCSVName, orders.orderMap);
+        orders.writeInputFile(saver.sampleDataCSVName, orders.orderMap);
     }
 
     @FXML
@@ -116,12 +118,12 @@ public class OrderManagerController {
     public void FillTable() throws IOException{
         List<String> orderList = new ArrayList(orders.orderMap.values());
         ObservableList<String> ordee = FXCollections.observableArrayList(orderList);
-        Map<String, OrderList.Order> copy;
+        Map<String, Order> copy;
         copy = orders.orderMap;
-        ObservableList<OrderList.Order> pop = FXCollections.observableArrayList();
-        for( OrderList.Order i : copy.values()){
+        ObservableList<Order> pop = FXCollections.observableArrayList();
+        for(Order i : copy.values()){
 
-            OrderList.Order temp = i;
+            Order temp = i;
             pop.add(temp);
 
         }
@@ -164,7 +166,7 @@ public class OrderManagerController {
     public void FileOpen(ActionEvent event) throws IOException{
 
         try {
-            File oFile = new File(orders.sampleDataTXTName);
+            File oFile = new File(dataLoader.sampleDataTXTName);
 
             Desktop desktop = Desktop.getDesktop();
 

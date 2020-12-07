@@ -18,83 +18,31 @@ import java.util.Map;
 //      Main Class      //
 public class Main extends Application {
     //  Main Class variables  //
+    Loader dataLoader = new Loader();
     Inventory inventory = new Inventory();
     public String sampleDataCSVName = "sampleDatasetA.csv";
     public String sampleEmployeesCSVName = "sampleEmployeesA.csv";
-    public String sampleEmployeesTXTName = "sampleEmployeesA.txt";
     public String sampleOrdersCSVName = "sampleOrders.csv";
-    public String sampleOrdersTXTName = "sampleOrders.txt";
-    public class User {
-        private String type;
-        private String name;
-        private String username;
-        private String password;
-        private String shifts;
-        @Override
-        public String toString() {
-            return type + "," + name + "," + username + "," + password + "," + shifts + "\n"; }
-    }
-    public class Order {
-        private String name;
-        private String list;
-        private double total;
-        private String role;
-        @Override
-        public String toString() {
-            return name + "," + list + "," + total + "," + role + "\n"; }
-    }
-    Map<String, User> userMap = new HashMap<String, User>();
-    Map<String, Order> orderMap = new HashMap<String, Order>();
     //      main Function        //
     public static void main(String[] args) { launch(args); }
     //      start Function      //
     @Override
     public void start(Stage primaryStage) throws Exception{
         // Load Files
-        Loader dataLoader = new Loader();
         this.inventory = dataLoader.loadInventory();
-        readEmployeesFile(sampleEmployeesTXTName);
-        readOrdersFile(sampleOrdersTXTName);
+        dataLoader.readOrdersFile();
+        dataLoader.readEmployeesFile();
+
         // show input and write files
         writeAll();
-        printAll(dataLoader.inventoryMap, userMap, orderMap);
+        printAll(dataLoader.inventoryMap, dataLoader.userMap, dataLoader.orderMap);
         // Views
         Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
         primaryStage.setTitle("Grocery Delivery System Employee Portal");
         primaryStage.setScene(new Scene(root, 800, 500));
         primaryStage.show();
     }
-    //      readInputFile Function      //
-    public void readEmployeesFile(String csvFileName) throws FileNotFoundException {
-        Scanner input = new Scanner(new File(csvFileName));
-        while(input.hasNextLine()) {
-            String line = input.nextLine();
-            String[] token = line.split(",");
-            User tempUser = new User();
-            tempUser.type = token[0];
-            tempUser.name = token[1];
-            tempUser.username = token[2];
-            tempUser.password = token[3];
-            tempUser.shifts = token[4];
-            userMap.put(token[1], tempUser);
-        }
-        input.close();
-    }
-    public void readOrdersFile(String csvFileName) throws FileNotFoundException {
-        Scanner input = new Scanner(new File(csvFileName));
-        while(input.hasNextLine()) {
-            String line = input.nextLine();
-            String[] token = line.split(",");
-            Order tempOrder = new Order();
-            tempOrder.name = token[0];
-            tempOrder.list = token[1];
-            double tempPrice = Double.parseDouble(token[2]);
-            tempOrder.total = tempPrice;
-            tempOrder.role = token[3];
-            orderMap.put(token[0], tempOrder);
-        }
-        input.close();
-    }
+
     //      writeCSVFile Function     //
     public void writeCSVFile(String csvFileName, Map hashMap) throws IOException {
         FileWriter writer = new FileWriter(csvFileName);
@@ -110,8 +58,8 @@ public class Main extends Application {
     //      writeALL Function       //
     public void writeAll() throws IOException {
         writeCSVFile(sampleDataCSVName, inventory.inventoryMap);
-        writeCSVFile(sampleEmployeesCSVName, userMap);
-        writeCSVFile(sampleOrdersCSVName, orderMap);
+        writeCSVFile(sampleEmployeesCSVName, dataLoader.userMap);
+        writeCSVFile(sampleOrdersCSVName, dataLoader.orderMap);
     }
     //      printMap       //
     public void printMap(Map hashMap) {

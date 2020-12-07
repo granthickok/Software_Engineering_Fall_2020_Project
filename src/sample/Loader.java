@@ -9,7 +9,11 @@ public class Loader {
     // local variables
     public String loaderName;
     public String sampleDataTXTName = "sampleDatasetA.txt";
+    public String sampleEmployeesTXTName = "sampleEmployeesA.txt";
+    public String sampleOrdersTXTName = "sampleOrders.txt";
     Map<String, GroceryItem> inventoryMap = new HashMap<String, GroceryItem>();
+    Map<String, User> userMap = new HashMap<String, User>();
+    Map<String, Order> orderMap = new HashMap<String, Order>();
     //      readInventoryFile        //
     public Inventory loadInventory() throws FileNotFoundException
     {
@@ -31,6 +35,37 @@ public class Loader {
         }
         input.close();
         return inventory;
+    }
+    //      readInputFile Function      //
+    public void readEmployeesFile() throws FileNotFoundException {
+        Scanner input = new Scanner(new File(sampleEmployeesTXTName));
+        while(input.hasNextLine()) {
+            String line = input.nextLine();
+            String[] token = line.split(",");
+            User tempUser = new User();
+            tempUser.type = token[0];
+            tempUser.name = token[1];
+            tempUser.username = token[2];
+            tempUser.password = token[3];
+            tempUser.shifts = token[4];
+            userMap.put(token[1], tempUser);
+        }
+        input.close();
+    }
+    public void readOrdersFile() throws FileNotFoundException {
+        Scanner input = new Scanner(new File(sampleOrdersTXTName));
+        while(input.hasNextLine()) {
+            String line = input.nextLine();
+            String[] token = line.split(",");
+            Order tempOrder = new Order();
+            tempOrder.name = token[0];
+            tempOrder.list = token[1];
+            double tempPrice = Double.parseDouble(token[2]);
+            tempOrder.total = tempPrice;
+            tempOrder.role = token[3];
+            orderMap.put(token[0], tempOrder);
+        }
+        input.close();
     }
 }
 // EOF

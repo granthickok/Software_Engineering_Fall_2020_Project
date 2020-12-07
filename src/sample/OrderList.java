@@ -7,72 +7,13 @@ import java.io.IOException;
 import java.util.*;
 
 public class OrderList {
-    public String sampleDataCSVName = "sampleOrders.csv";
-    public String sampleDataTXTName = "sampleOrders.txt";
-
-    public class Order {
-        public String name;
-        public String list;
-        public double total;
-        public String role;
-
-        @Override
-        public String toString() {
-            return name + "," + list + "," + total + "," + role + "\n";
-        }
-
-        public String getName() {
-
-            return name;
-
-        }
-
-        public void setName(String n) {
-
-            name = n;
-        }
-
-        public String getList() {
-
-            return list;
-
-        }
-
-        public void setList(String l) {
-
-            list = l;
-        }
-
-        public double getTotal() {
-
-            return total;
-
-        }
-
-        public void setTotal(double t) {
-
-            total = t;
-        }
-
-        public String getRole() {
-
-            return role;
-
-        }
-
-        public void setRole(String r) {
-
-            role = r;
-        }
-
-    }
-
+    Loader dataLoader = new Loader();
+    Saver saver = new Saver();
     Map<String, Order> orderMap = new HashMap<String, Order>();
 
     // Read Order File //
-
-    public void readOrdersFile(String csvFileName) throws FileNotFoundException {
-        Scanner input = new Scanner(new File(csvFileName));
+    public void readOrdersFile() throws FileNotFoundException {
+        Scanner input = new Scanner(new File(dataLoader.sampleOrdersTXTName));
         while(input.hasNextLine()) {
             String line = input.nextLine();
             String[] token = line.split(",");
@@ -86,10 +27,9 @@ public class OrderList {
         }
         input.close();
     }
-
     //      writeInputFile Function     //
     public void writeInputFile(String csvFileName, Map hashMap) throws IOException {
-        FileWriter writer = new FileWriter(sampleDataCSVName);
+        FileWriter writer = new FileWriter(saver.sampleOrdersCSVName);
         hashMap.forEach((k, v) -> {
             try {
                 writer.write(hashMap.get(k).toString());
@@ -99,19 +39,15 @@ public class OrderList {
         });
         writer.close();
     }
-
     public void searchMap(String inputName, String inputType, String inputPrice, String inputRole) {
-        Map<String, OrderList.Order> newMap = new HashMap<String, OrderList.Order>();
-        for (Map.Entry<String, OrderList.Order> entry : orderMap.entrySet()) {
+        Map<String, Order> newMap = new HashMap<String, Order>();
+        for (Map.Entry<String, Order> entry : orderMap.entrySet()) {
             if(!entry.getValue().name.toLowerCase().contains(inputName.toLowerCase()))
                 continue;
-
             if(!entry.getValue().list.toLowerCase().contains(inputType.toLowerCase()))
                 continue;
-
             if(!entry.getValue().role.toLowerCase().contains(inputRole.toLowerCase()))
                 continue;
-
             if (inputPrice.length() != 0) {
                 if(inputPrice.contains("+"))
                 {
@@ -126,7 +62,6 @@ public class OrderList {
                         continue;
                 }
             }
-
             newMap.put(entry.getValue().name, entry.getValue());
         }
         orderMap = newMap;
