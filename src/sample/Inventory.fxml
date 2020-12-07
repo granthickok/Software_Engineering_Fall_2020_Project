@@ -45,7 +45,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="549.0" layoutY="360.0" mnemonicParsing="false" text="Update" />
+      <Button layoutX="577.0" layoutY="360.0" mnemonicParsing="false" text="Update" />
       <Text fill="WHITE" layoutX="104.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Expired:" wrappingWidth="136.13671875" />
       <TextField editable="false" layoutX="104.0" layoutY="347.0" prefHeight="25.0" prefWidth="179.0" />
       <MenuButton layoutX="224.0" layoutY="455.0" mnemonicParsing="false" text="SortBy:">
@@ -77,5 +77,6 @@
             <Font size="18.0" />
          </font>
       </Text>
+      <Button fx:id="clear" layoutX="512.0" layoutY="360.0" mnemonicParsing="false" onAction="#ClearTable" text="Clear" />
    </children>
 </AnchorPane>
