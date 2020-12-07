@@ -18,22 +18,12 @@ import java.util.Map;
 //      Main Class      //
 public class Main extends Application {
     //  Main Class variables  //
+    Inventory inventory = new Inventory();
     public String sampleDataCSVName = "sampleDatasetA.csv";
-    public String sampleDataTXTName = "sampleDatasetA.txt";
     public String sampleEmployeesCSVName = "sampleEmployeesA.csv";
     public String sampleEmployeesTXTName = "sampleEmployeesA.txt";
     public String sampleOrdersCSVName = "sampleOrders.csv";
     public String sampleOrdersTXTName = "sampleOrders.txt";
-    public class GroceryItem {
-        private String type;
-        private String name;
-        private double price;
-        private int stock;
-        private int expDATE;
-        @Override
-        public String toString() {
-            return type + "," + name + "," + price + "," + stock + "," + expDATE + "\n"; }
-    }
     public class User {
         private String type;
         private String name;
@@ -53,7 +43,6 @@ public class Main extends Application {
         public String toString() {
             return name + "," + list + "," + total + "," + role + "\n"; }
     }
-    public static Map<String, GroceryItem> inventoryMap = new HashMap<String, GroceryItem>();
     Map<String, User> userMap = new HashMap<String, User>();
     Map<String, Order> orderMap = new HashMap<String, Order>();
     //      main Function        //
@@ -62,12 +51,13 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         // Load Files
+        Loader dataLoader = new Loader();
+        this.inventory = dataLoader.loadInventory();
         readEmployeesFile(sampleEmployeesTXTName);
-        readInventoryFile(sampleDataTXTName);
         readOrdersFile(sampleOrdersTXTName);
         // show input and write files
         writeAll();
-        printAll(inventoryMap, userMap, orderMap);
+        printAll(dataLoader.inventoryMap, userMap, orderMap);
         // Views
         Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
         primaryStage.setTitle("Grocery Delivery System Employee Portal");
@@ -117,24 +107,6 @@ public class Main extends Application {
         }
         input.close();
     }
-    public void readInventoryFile(String csvFileName) throws FileNotFoundException {
-        Scanner input = new Scanner(new File(csvFileName));
-        while(input.hasNextLine()) {
-            String line = input.nextLine();
-            String[] token = line.split(",");
-            GroceryItem tempItem = new GroceryItem();
-            tempItem.type = token[0];
-            tempItem.name = token[1];
-            double tempPrice = Double.parseDouble(token[2]);
-            tempItem.price = tempPrice;
-            int tempStock = Integer.parseInt(token[3]);
-            tempItem.stock = tempStock;
-            int tempDate = Integer.parseInt(token[4]);
-            tempItem.expDATE = tempDate;
-            inventoryMap.put(token[1], tempItem);
-        }
-        input.close();
-    }
     //      writeCSVFile Function     //
     public void writeCSVFile(String csvFileName, Map hashMap) throws IOException {
         FileWriter writer = new FileWriter(csvFileName);
@@ -149,7 +121,7 @@ public class Main extends Application {
     }
     //      writeALL Function       //
     public void writeAll() throws IOException {
-        writeCSVFile(sampleDataCSVName, inventoryMap);
+        writeCSVFile(sampleDataCSVName, inventory.inventoryMap);
         writeCSVFile(sampleEmployeesCSVName, userMap);
         writeCSVFile(sampleOrdersCSVName, orderMap);
     }

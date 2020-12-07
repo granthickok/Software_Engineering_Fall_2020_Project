@@ -62,7 +62,7 @@
          </font>
       </Text>
       <Button fx:id="invent" layoutX="104.0" layoutY="221.0" mnemonicParsing="false" onAction="#LoadInventory" prefHeight="101.0" prefWidth="106.0" style="-fx-background-color: transparent;" />
-      <Button fx:id="notif" layoutX="581.0" layoutY="221.0" mnemonicParsing="false" onAction="#OpenExpiredInventory" prefHeight="101.0" prefWidth="106.0" style="-fx-background-color: transparent;" />
+      <Button fx:id="notif" layoutX="581.0" layoutY="221.0" mnemonicParsing="false" onAction="#ShowNotifications" prefHeight="101.0" prefWidth="106.0" style="-fx-background-color: transparent;" />
       <Button fx:id="order" layoutX="331.0" layoutY="221.0" mnemonicParsing="false" onAction="#LoadOrder" prefHeight="101.0" prefWidth="140.0" style="-fx-background-color: transparent;" />
    </children>
 </AnchorPane>

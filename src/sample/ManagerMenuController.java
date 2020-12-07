@@ -23,19 +23,14 @@ public class ManagerMenuController {
 
     @FXML
     public Button back = null; //button to change screens
-
     @FXML
     public Button invent = null; //button to change screens
-
     @FXML
     public Button notif = null; //button to pull up notifications
-
     @FXML
     public Button order = null; //button to pull up notifications
-
     @FXML
     public AnchorPane rootPane1;
-
     @FXML
     public Label user = null;
 
@@ -43,7 +38,6 @@ public class ManagerMenuController {
 
     @FXML
     public void LoadLogin(ActionEvent event) throws IOException { //Change to Main Menu
-
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Start.fxml"));
         rootPane1 = loader.load();
@@ -54,12 +48,10 @@ public class ManagerMenuController {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();// pane you are ON
         window.setScene(scene);
         window.show();
-
     }
 
     @FXML
     public void LoadInventory(ActionEvent event) throws IOException { //Change to Main Menu
-
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Inventory.fxml"));
         rootPane1 = loader.load();
@@ -70,12 +62,10 @@ public class ManagerMenuController {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();// pane you are ON
         window.setScene(scene);
         window.show();
-
     }
 
     @FXML
     public void LoadOrder(ActionEvent event) throws IOException { //Change to Main Menu
-
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Order.fxml"));
         rootPane1 = loader.load();
@@ -86,15 +76,12 @@ public class ManagerMenuController {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();// pane you are ON
         window.setScene(scene);
         window.show();
-
     }
 
     @FXML
-    public void OpenExpiredInventory(ActionEvent event) throws IOException { //Open inventory list
-        // Load Files
-        Inventory inv = new Inventory();
-        inv.readInputFile(inv.sampleDataTXTName);
-        inv.writeInputFile(inv.sampleDataCSVName, inv.inventoryMap);
+    public void ShowNotifications() throws IOException {
+        Loader dataLoader = new Loader();
+        Inventory inv = dataLoader.loadInventory();
         inv.printInventoryMap(inv.inventoryMap);
         inv.sortMap(4);
         ListView<String> list = new ListView<String>();
@@ -104,9 +91,9 @@ public class ManagerMenuController {
         list.setPrefSize(400, 500);
         StackPane groot = new StackPane();
         groot.getChildren().add(list);
-        Scene invScreen = new Scene(groot, 200, 250);
+        Scene invScreen = new Scene(groot, 400, 500);
         Stage newWindow = new Stage();
-        newWindow.setTitle("Inventory");
+        newWindow.setTitle("Low or Expired Items:");
         newWindow.setScene(invScreen);
         newWindow.show();
     }

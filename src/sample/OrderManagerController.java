@@ -61,7 +61,7 @@ public class OrderManagerController {
         Name.setCellValueFactory(new PropertyValueFactory<>("B"));
         Price.setCellValueFactory(new PropertyValueFactory<>("C"));
         Quantity.setCellValueFactory(new PropertyValueFactory<>("D"));
-        System.out.println(Main.inventoryMap);
+        System.out.println();
     }
 
 
