@@ -62,18 +62,6 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
         primaryStage.setTitle("Grocery Delivery System Employee Portal");
         primaryStage.setScene(new Scene(root, 800, 500));
-        ListView<String> list = new ListView<String>();
-        ObservableList<String> items = FXCollections.observableArrayList (
-                "Single", "Double", "Suite", "Family App");
-        list.setItems(items);
-        list.setPrefSize(200, 250);
-        StackPane groot = new StackPane();
-        groot.getChildren().add(list);
-        Scene invScreen = new Scene(groot, 200, 250);
-        Stage newWindow = new Stage();
-        newWindow.setTitle("Inventory");
-        newWindow.setScene(invScreen);
-        newWindow.show();
         primaryStage.show();
     }
     //      readInputFile Function      //

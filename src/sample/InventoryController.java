@@ -27,9 +27,6 @@ import java.util.*;
 import java.util.List;
 //      Class InventoryController     //
 public class InventoryController implements Initializable {
-    // Local Variables
-    private int sortNum = -1;
-    private Inventory inv = new Inventory();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {}
@@ -61,11 +58,14 @@ public class InventoryController implements Initializable {
     public TableColumn<GroceryItem,String> Stock = null;
     @FXML
     public TableColumn<GroceryItem,String> Expired = null;
+    public Inventory inv = new Inventory();
     @FXML
     public TextField ItemName = null;
     public TextField ItemType = null;
     public TextField ItemPrice = null;
     public TextField ItemStock = null;
+    int sortNum = -1;
+
     @FXML
     public void LoadEmployeeMenu(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
@@ -119,14 +119,20 @@ public class InventoryController implements Initializable {
 
     public void SearchInventory(ActionEvent event) throws IOException{ //Open inventory list
         // Load Files
-        //SetInventory();
+        table.getItems().clear();
+        //setInventory();
         inv.searchMap(ItemName.getText(), ItemType.getText(), ItemPrice.getText(), ItemStock.getText());
+        ItemName.clear();
+        ItemType.clear();
+        ItemPrice.clear();
+        ItemStock.clear();
         FillTable();
     }
 
     public void SortInventory(ActionEvent event) throws IOException { //Open inventory list
         // Load Files
-        //SetInventory();
+        table.getItems().clear();
+        //
         inv.sortMap(sortNum);
         FillTable();
     }
@@ -151,6 +157,25 @@ public class InventoryController implements Initializable {
     public void ShowExp(ActionEvent event) throws IOException { //Open inventory list
         sortNum = 4;
         SortInventory(null);
+    }
+
+    @FXML
+    public void FileOpen(ActionEvent event) throws IOException{
+        Loader dataLoader = new Loader();
+        try {
+            File oFile = new File(dataLoader.sampleDataTXTName);
+
+            Desktop desktop = Desktop.getDesktop();
+
+            if (oFile.exists()) {
+
+                desktop.open(oFile);
+            }
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+        }
     }
 }
 // EOF
