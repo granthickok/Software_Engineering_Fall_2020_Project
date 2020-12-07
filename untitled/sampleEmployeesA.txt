@@ -1,0 +1,11 @@
+Customer,Austin Sanders,aSanders123,password,MmTmWmHmFmSnUn
+Driver,Dave Tran,dTran123,password,MeTeWeHeFeSnUn
+Driver,Philip Chavez,pChavez123,password,MaTnWnHaFaSaUn
+Manager,Grant Hickok,gHickok123,password,MnTnWnHmFmSaUa
+Driver,Alyssa Baker,aBaker123,password,MeTeWeHeFeSnUa
+Maintenance,Cesar Gutierrez,cGutierrez123,password,MmTaWaHmFmSaUa
+Driver,Kalie Davis,kDavis123,password,MmTeWeHmFeSnUa
+Manager,Oscar Cortez,oCortez123,password,MeTeWeHeFeSaUn
+Manager,Henry Nguyen,hNguyen123,password,MmTmWmHmFmSnUa
+Manager,Ali Patel,aPatel123,password,MmTmWaHmFmSnUa
+Manager,Bob Smith,bSmith123,password,MaTaWnHaFaSaUn
