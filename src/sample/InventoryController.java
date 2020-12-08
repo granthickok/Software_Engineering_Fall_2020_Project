@@ -60,30 +60,29 @@ public class InventoryController implements Initializable {
     public Button clear = null;
 
     @FXML
-    public TableView<Inventory.GroceryItem> table = null;
+    public TableView<GroceryItem> table = null;
 
     @FXML
-    public TableColumn<Inventory.GroceryItem,String> Category = null;
+    public TableColumn<GroceryItem,String> Category = null;
 
     @FXML
-    public TableColumn<Inventory.GroceryItem,String> Name = null;
+    public TableColumn<GroceryItem,String> Name = null;
 
     @FXML
-    public TableColumn<Inventory.GroceryItem,String> Price = null;
+    public TableColumn<GroceryItem,String> Price = null;
 
     @FXML
-    public TableColumn<Inventory.GroceryItem,String> Stock = null;
+    public TableColumn<GroceryItem,String> Stock = null;
 
     @FXML
-    public TableColumn<Inventory.GroceryItem,String> Expired = null;
+    public TableColumn<GroceryItem,String> Expired = null;
 
-    public Inventory inv = new Inventory();
+
 
 
     public Loader dataLoader = new Loader();
-
-
-    @FXML
+    public Inventory inv = new Inventory(dataLoader.inventoryMap);
+    public Saver saver = new Saver(dataLoader.inventoryMap, dataLoader.userMap, dataLoader.orderMap);
     public TextField ItemName = null;
     public TextField ItemType = null;
     public TextField ItemPrice = null;
@@ -130,19 +129,19 @@ public class InventoryController implements Initializable {
     }
 
     public void SetInventory() throws IOException {
-        inv.readInputFile(inv.sampleDataTXTName);
-        inv.writeInputFile(inv.sampleDataCSVName, inv.inventoryMap);
+        dataLoader.loadInventory();
+        saver.writeInventory(dataLoader.inventoryMap);
     }
 
     public void FillTable() throws IOException{
         List<String> itemList = new ArrayList(inv.inventoryMap.values());
         ObservableList<String> items = FXCollections.observableArrayList(itemList);
-        Map<String, Inventory.GroceryItem> copy;
+        Map<String, GroceryItem> copy;
         copy = inv.inventoryMap;
-        ObservableList<Inventory.GroceryItem> pop = FXCollections.observableArrayList();
-        for( Inventory.GroceryItem i : copy.values()){
+        ObservableList<GroceryItem> pop = FXCollections.observableArrayList();
+        for( GroceryItem i : copy.values()){
 
-            Inventory.GroceryItem temp = i;
+            GroceryItem temp = i;
             pop.add(temp);
 
         }

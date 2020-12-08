@@ -19,7 +19,7 @@ public class Loader {
     public Inventory loadInventory() throws FileNotFoundException
     {
         Scanner input = new Scanner(new File(sampleDataTXTName));
-        Inventory inventory = new Inventory();
+        Inventory inventory = new Inventory(inventoryMap);
         while(input.hasNextLine()) {
             String line = input.nextLine();
             String[] token = line.split(",");
@@ -61,6 +61,17 @@ public class Loader {
             Order tempOrder = new Order();
             tempOrder.name = token[0];
             tempOrder.list = token[1];
+            String[] tempList = tempOrder.list.split("#");
+            int i = 0;
+            while(i < tempList.length) {
+                if(tempList[i] == null) { break; }
+                String[] newList = tempList[i].split("=");
+                tempOrder.tempInt = Integer.parseInt(newList[0]);
+                tempOrder.tempGroceryItemName = newList[1];
+                tempOrder.groceryItemMap.put(tempOrder.tempInt
+                        ,tempOrder.tempGroceryItemName);
+                i++;
+            }
             double tempPrice = Double.parseDouble(token[2]);
             tempOrder.total = tempPrice;
             tempOrder.role = token[3];

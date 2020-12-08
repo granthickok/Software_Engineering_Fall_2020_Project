@@ -19,7 +19,7 @@ import java.util.Map;
 public class Main extends Application {
     //  Main Class Constructors  //
     Loader dataLoader = new Loader();
-    Inventory inventory = new Inventory();
+    Inventory inventory = new Inventory(dataLoader.inventoryMap);
     //      main Function        //
     public static void main(String[] args) { launch(args); }
     //      start Function      //

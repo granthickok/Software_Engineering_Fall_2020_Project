@@ -40,6 +40,7 @@ public class ManagerMenuController {
     public String muser;
 
     public Loader dataLoader = new Loader();
+    public Saver saver = new Saver(dataLoader.inventoryMap, dataLoader.userMap, dataLoader.orderMap);
 
     @FXML
     public void LoadLogin(ActionEvent event) throws IOException { //Change to Main Menu
@@ -89,9 +90,9 @@ public class ManagerMenuController {
 
     @FXML
     public void ShowNotifications() throws IOException {
-        Inventory inv = new Inventory();
-        inv.readInputFile(inv.sampleDataTXTName);
-        inv.writeInputFile(inv.sampleDataCSVName, inv.inventoryMap);
+        Inventory inv = new Inventory(dataLoader.inventoryMap);
+        dataLoader.loadInventory();
+        saver.writeInventory(dataLoader.inventoryMap);
         inv.printInventoryMap(inv.inventoryMap);
         inv.sortMap(4);
         ListView<String> list = new ListView<String>();
