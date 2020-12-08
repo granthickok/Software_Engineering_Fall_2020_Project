@@ -15,8 +15,8 @@ Meat,ribeye steak 1 lbs.,9.99,8,14
 Meat,chicken breast 1 lbs.,8.,99,11,14
 Meat,bacon 1 lbs.,6.99,15,14
 Meat,shrimp 1 lbs.,8.99,12,14
-Produce,apple,1.99,16,14
-Cleaners,dish soap,2.99,20,14
+Produce,apple,1.99,16,4
+Cleaners,dish soap,2.99,20,3
 Paper Goods,toilet paper,12.99,2,14
-Personal Care,toothpaste,4.99,6,14
-Other,AA batteries 6ct.,8.99,5,14
+Personal Care,toothpaste,4.99,6,1
+Other,AA batteries 6ct.,8.99,5,0

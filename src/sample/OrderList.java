@@ -8,37 +8,8 @@ import java.util.*;
 
 public class OrderList {
     Loader dataLoader = new Loader();
-    Saver saver = new Saver();
     Map<String, Order> orderMap = new HashMap<String, Order>();
 
-    // Read Order File //
-    public void readOrdersFile() throws FileNotFoundException {
-        Scanner input = new Scanner(new File(dataLoader.sampleOrdersTXTName));
-        while(input.hasNextLine()) {
-            String line = input.nextLine();
-            String[] token = line.split(",");
-            Order tempOrder = new Order();
-            tempOrder.name = token[0];
-            tempOrder.list = token[1];
-            double tempPrice = Double.parseDouble(token[2]);
-            tempOrder.total = tempPrice;
-            tempOrder.role = token[3];
-            orderMap.put(token[0], tempOrder);
-        }
-        input.close();
-    }
-    //      writeInputFile Function     //
-    public void writeInputFile(String csvFileName, Map hashMap) throws IOException {
-        FileWriter writer = new FileWriter(saver.sampleOrdersCSVName);
-        hashMap.forEach((k, v) -> {
-            try {
-                writer.write(hashMap.get(k).toString());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        writer.close();
-    }
     public void searchMap(String inputName, String inputType, String inputPrice, String inputRole) {
         Map<String, Order> newMap = new HashMap<String, Order>();
         for (Map.Entry<String, Order> entry : orderMap.entrySet()) {

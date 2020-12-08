@@ -75,13 +75,13 @@ public class OrderManagerController {
 
     public OrderList orders = new OrderList();
     public Loader dataLoader = new Loader();
-    public Saver saver = new Saver();
+    public Saver saver = new Saver(dataLoader.inventoryMap,dataLoader.userMap,dataLoader.orderMap);
 
     public void SetOrderList() throws IOException {
         dataLoader.readOrdersFile();
         //System.out.print(orders.orderMap);
         orders.orderMap = dataLoader.orderMap;
-        orders.writeInputFile(saver.sampleDataCSVName, orders.orderMap);
+        saver.writeOrders(orders.orderMap);
     }
 
     @FXML
