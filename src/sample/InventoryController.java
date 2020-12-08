@@ -1,4 +1,5 @@
 package sample;
+
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -25,48 +26,74 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.List;
-//      Class InventoryController     //
+
 public class InventoryController implements Initializable {
+
     @Override
-    public void initialize(URL location, ResourceBundle resources) {}
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
     @FXML
     public AnchorPane rootPane1;
+
     @FXML
     public Label logged;
+
     @FXML
     public String iUser;
+
+
     @FXML
     public Button LogOut = null;
+
     @FXML
     public Button search = null;
+
     @FXML
     public Button viewAll = null;
+
     @FXML
     public Button update = null;
+
     @FXML
     public Button clear = null;
+
     @FXML
-    public TableView<GroceryItem> table = null;
+    public TableView<Inventory.GroceryItem> table = null;
+
     @FXML
-    public TableColumn<GroceryItem,String> Category = null;
+    public TableColumn<Inventory.GroceryItem,String> Category = null;
+
     @FXML
-    public TableColumn<GroceryItem,String> Name = null;
+    public TableColumn<Inventory.GroceryItem,String> Name = null;
+
     @FXML
-    public TableColumn<GroceryItem,String> Price = null;
+    public TableColumn<Inventory.GroceryItem,String> Price = null;
+
     @FXML
-    public TableColumn<GroceryItem,String> Stock = null;
+    public TableColumn<Inventory.GroceryItem,String> Stock = null;
+
     @FXML
-    public TableColumn<GroceryItem,String> Expired = null;
+    public TableColumn<Inventory.GroceryItem,String> Expired = null;
+
     public Inventory inv = new Inventory();
+
+
+    public Loader dataLoader = new Loader();
+
+
     @FXML
     public TextField ItemName = null;
     public TextField ItemType = null;
     public TextField ItemPrice = null;
     public TextField ItemStock = null;
-    int sortNum = -1;
+
+    private int sortNum = -1;
 
     @FXML
     public void LoadEmployeeMenu(ActionEvent event) throws IOException {
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("ManagerMainMenu.fxml"));
         rootPane1 = loader.load();
@@ -78,8 +105,10 @@ public class InventoryController implements Initializable {
         window.setScene(scene);
         window.show();
     }
+
     @FXML
     public void LoadLogin(ActionEvent event) throws IOException { //Change to Main Menu
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Start.fxml"));
         rootPane1 = loader.load();
@@ -90,21 +119,32 @@ public class InventoryController implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();// pane you are ON
         window.setScene(scene);
         window.show();
+
     }
+
+
     @FXML
     public void ClearTable(ActionEvent event) throws IOException{
+
         table.getItems().clear();
+    }
+
+    public void SetInventory() throws IOException {
+        inv.readInputFile(inv.sampleDataTXTName);
+        inv.writeInputFile(inv.sampleDataCSVName, inv.inventoryMap);
     }
 
     public void FillTable() throws IOException{
         List<String> itemList = new ArrayList(inv.inventoryMap.values());
         ObservableList<String> items = FXCollections.observableArrayList(itemList);
-        Map<String, GroceryItem> copy;
+        Map<String, Inventory.GroceryItem> copy;
         copy = inv.inventoryMap;
-        ObservableList<GroceryItem> pop = FXCollections.observableArrayList();
-        for( GroceryItem i : copy.values()){
-            GroceryItem temp = i;
+        ObservableList<Inventory.GroceryItem> pop = FXCollections.observableArrayList();
+        for( Inventory.GroceryItem i : copy.values()){
+
+            Inventory.GroceryItem temp = i;
             pop.add(temp);
+
         }
         Category.setCellValueFactory(new PropertyValueFactory<>("type"));
         Name.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -118,20 +158,14 @@ public class InventoryController implements Initializable {
 
     public void SearchInventory(ActionEvent event) throws IOException{ //Open inventory list
         // Load Files
-        table.getItems().clear();
-        //setInventory();
+        SetInventory();
         inv.searchMap(ItemName.getText(), ItemType.getText(), ItemPrice.getText(), ItemStock.getText());
-        ItemName.clear();
-        ItemType.clear();
-        ItemPrice.clear();
-        ItemStock.clear();
         FillTable();
     }
 
     public void SortInventory(ActionEvent event) throws IOException { //Open inventory list
         // Load Files
-        table.getItems().clear();
-        //
+        SetInventory();
         inv.sortMap(sortNum);
         FillTable();
     }
@@ -140,14 +174,17 @@ public class InventoryController implements Initializable {
     public void SortName(ActionEvent event) throws IOException { //Open inventory list
         sortNum = 0;
     }
+
     @FXML
     public void SortType(ActionEvent event) throws IOException { //Open inventory list
         sortNum = 1;
     }
+
     @FXML
     public void SortPrice(ActionEvent event) throws IOException { //Open inventory list
         sortNum = 2;
     }
+
     @FXML
     public void SortStock(ActionEvent event) throws IOException { //Open inventory list
         sortNum = 3;
@@ -160,17 +197,21 @@ public class InventoryController implements Initializable {
 
     @FXML
     public void FileOpen(ActionEvent event) throws IOException{
-        Loader dataLoader = new Loader();
+
         try {
             File oFile = new File(dataLoader.sampleDataTXTName);
+
             Desktop desktop = Desktop.getDesktop();
+
             if (oFile.exists()) {
+
                 desktop.open(oFile);
             }
         }
         catch(Exception e){
+
             e.printStackTrace();
         }
     }
+
 }
-// EOF

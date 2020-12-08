@@ -80,6 +80,7 @@ public class OrderManagerController {
     public void SetOrderList() throws IOException {
         dataLoader.readOrdersFile();
         //System.out.print(orders.orderMap);
+        orders.orderMap = dataLoader.orderMap;
         orders.writeInputFile(saver.sampleDataCSVName, orders.orderMap);
     }
 
@@ -150,7 +151,7 @@ public class OrderManagerController {
 
     @FXML
     public void SetTable(ActionEvent event) throws IOException{
-
+        System.out.println("Viewing orders...\n");
         ord.getItems().clear();
         SetOrderList();
         FillTable();
@@ -166,7 +167,7 @@ public class OrderManagerController {
     public void FileOpen(ActionEvent event) throws IOException{
 
         try {
-            File oFile = new File(dataLoader.sampleDataTXTName);
+            File oFile = new File(dataLoader.sampleOrdersTXTName);
 
             Desktop desktop = Desktop.getDesktop();
 

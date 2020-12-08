@@ -18,4 +18,3 @@ public class Order {
     public String getRole() { return role; }
     public void setRole(String r) { role = r; }
 }
-

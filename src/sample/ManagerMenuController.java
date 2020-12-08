@@ -15,6 +15,9 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.w3c.dom.Text;
 
+import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +39,11 @@ public class ManagerMenuController {
 
     public String muser;
 
+    public Loader dataLoader = new Loader();
+
     @FXML
     public void LoadLogin(ActionEvent event) throws IOException { //Change to Main Menu
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Start.fxml"));
         rootPane1 = loader.load();
@@ -48,10 +54,12 @@ public class ManagerMenuController {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();// pane you are ON
         window.setScene(scene);
         window.show();
+
     }
 
     @FXML
     public void LoadInventory(ActionEvent event) throws IOException { //Change to Main Menu
+
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Inventory.fxml"));
         rootPane1 = loader.load();
@@ -62,6 +70,7 @@ public class ManagerMenuController {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();// pane you are ON
         window.setScene(scene);
         window.show();
+
     }
 
     @FXML
@@ -80,8 +89,9 @@ public class ManagerMenuController {
 
     @FXML
     public void ShowNotifications() throws IOException {
-        Loader dataLoader = new Loader();
-        Inventory inv = dataLoader.loadInventory();
+        Inventory inv = new Inventory();
+        inv.readInputFile(inv.sampleDataTXTName);
+        inv.writeInputFile(inv.sampleDataCSVName, inv.inventoryMap);
         inv.printInventoryMap(inv.inventoryMap);
         inv.sortMap(4);
         ListView<String> list = new ListView<String>();
@@ -96,5 +106,81 @@ public class ManagerMenuController {
         newWindow.setTitle("Low or Expired Items:");
         newWindow.setScene(invScreen);
         newWindow.show();
+    }
+
+    @FXML
+    public void OpenItemFile(ActionEvent event) throws IOException{
+
+        try {
+            File oFile = new File(dataLoader.sampleDataTXTName);
+
+            Desktop desktop = Desktop.getDesktop();
+
+            if (oFile.exists()) {
+
+                desktop.open(oFile);
+            }
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void OpenOrderFile(ActionEvent event) throws IOException{
+
+        try {
+            File oFile = new File(dataLoader.sampleOrdersTXTName);
+
+            Desktop desktop = Desktop.getDesktop();
+
+            if (oFile.exists()) {
+
+                desktop.open(oFile);
+            }
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void OpenUserFile(ActionEvent event) throws IOException{
+
+        try {
+            File oFile = new File(dataLoader.sampleEmployeesTXTName);
+
+            Desktop desktop = Desktop.getDesktop();
+
+            if (oFile.exists()) {
+
+                desktop.open(oFile);
+            }
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void OpenGuideFile(ActionEvent event) throws IOException{
+
+        try {
+            File oFile = new File(dataLoader.sampleGuideTXTName);
+
+            Desktop desktop = Desktop.getDesktop();
+
+            if (oFile.exists()) {
+
+                desktop.open(oFile);
+            }
+        }
+        catch(Exception e){
+
+            e.printStackTrace();
+        }
     }
 }

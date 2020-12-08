@@ -1,11 +1,11 @@
-General Manager,Bob Smith,bSmith123,password,MaTaWnHaFaSaUn
+Manager,Bob Smith,bSmith123,password,MaTaWnHaFaSaUn
 Driver,Philip Chavez,pChavez123,password,MaTnWnHaFaSaUn
+Manager,Grant Hickok,gHickok123,password,MnTnWnHmFmSaUa
 Driver,Alyssa Baker,aBaker123,password,MeTeWeHeFeSnUa
-Asst. Manager,Oscar Cortez,oCortez123,password,MeTeWeHeFeSaUn
-Asst. Manager,Henry Nguyen,hNguyen123,password,MmTmWmHmFmSnUa
+Manager,Oscar Cortez,oCortez123,password,MeTeWeHeFeSaUn
+Manager,Henry Nguyen,hNguyen123,password,MmTmWmHmFmSnUa
 Manager,Ali Patel,aPatel123,password,MmTmWaHmFmSnUa
-Driver,Austin Sanders,aSanders123,password,MmTmWmHmFmSnUn
+Customer,Austin Sanders,aSanders123,password,MmTmWmHmFmSnUn
 Driver,Dave Tran,dTran123,password,MeTeWeHeFeSnUn
-Driver,Grant Hendrick,gHendrick123,password,MnTnWnHmFmSaUa
-Driver,Cesar Gutierrez,cGutierrez123,password,MmTaWaHmFmSaUa
+Maintenance,Cesar Gutierrez,cGutierrez123,password,MmTaWaHmFmSaUa
 Driver,Kalie Davis,kDavis123,password,MmTeWeHmFeSnUa

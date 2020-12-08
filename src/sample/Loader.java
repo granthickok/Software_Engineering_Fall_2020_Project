@@ -11,6 +11,7 @@ public class Loader {
     public String sampleDataTXTName = "sampleDatasetA.txt";
     public String sampleEmployeesTXTName = "sampleEmployeesA.txt";
     public String sampleOrdersTXTName = "sampleOrders.txt";
+    public String sampleGuideTXTName = "UserGuide.txt";
     Map<String, GroceryItem> inventoryMap = new HashMap<String, GroceryItem>();
     Map<String, User> userMap = new HashMap<String, User>();
     Map<String, Order> orderMap = new HashMap<String, Order>();
